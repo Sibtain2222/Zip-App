@@ -1,0 +1,327 @@
+.app {
+  background-color: white;
+  min-height: 120vh;
+  padding: 16px; /* base padding */
+  text-align: center;
+}
+
+
+.Footer-container{
+  min-height: 10vh;
+  background-color:black;
+  width: 100%;
+  text-align: center;
+  padding: 16px;
+  background: #1e1e2f;     /* dark background */
+  color: #fff;             /* white text */
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: fixed;          /* stays at top */
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+
+
+
+
+
+
+/* ///////////////////////////    for file and folder dseg */
+
+/* ===== Reset & Base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #f9fafb;
+  color: #2c3e50;
+  line-height: 1.5;
+}
+
+/* ===== Header ===== */
+.app-header {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #fff;
+  padding: 22px;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.app-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+/* ===== Footer ===== */
+.app-footer {
+  margin-top: 40px;
+  background: #111827;
+  color: #d1d5db;
+  padding: 18px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* ===== Dashboard Grid ===== */
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.col-12 {
+  flex: 0 0 100%;
+}
+
+.col-md-6 {
+  flex: 0 0 48%;
+}
+
+/* Stack cards vertically on small screens */
+@media (max-width: 768px) {
+  .col-md-6 {
+    flex: 0 0 100%;
+  }
+}
+
+/* ===== Card Styling ===== */
+.container > div,
+.file-container,
+.container {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.container > div:hover,
+.file-container:hover,
+.container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+}
+
+/* ===== Titles ===== */
+.container h2, .file-container h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #111827;
+}
+
+/* ===== File/Folder Input ===== */
+input[type="file"] {
+  padding: 12px;
+  border: 2px dashed #a8a8a8;
+  border-radius: 10px;
+  background: #fafafa;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+}
+
+input[type="file"]:hover {
+  border-color: #3b82f6;
+  background: #f0f7ff;
+}
+
+/* ===== Buttons ===== */
+button {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+button:hover {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  transform: translateY(-2px);
+}
+
+/* Download button (green) */
+button.download-btn {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  box-shadow: 0 4px 12px rgba(34,197,94,0.3);
+}
+
+button.download-btn:hover {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+}
+
+
+/* //////////////////////////////////// for result  */
+
+
+/* Shared result card design */
+.result-card {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  background: #fff;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.result-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.result-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+/* File result styling (blue accent) */
+.file-result {
+  border-left: 6px solid #3b82f6;
+}
+.file-result h3 {
+  color: #2563eb;
+}
+
+/* Folder result styling (purple accent) */
+.folder-result {
+  border-left: 6px solid #9333ea;
+}
+.folder-result h3 {
+  color: #7e22ce;
+}
+
+/* Text sizes with highlight */
+.result-card p {
+  margin: 6px 0;
+  font-size: 15px;
+}
+.result-card p span {
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Reuse premium button */
+.download-btn {
+  margin-top: 14px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.download-btn:hover {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  transform: translateY(-2px);
+}
+
+
+/* //////////////////////////// */
+
+/* Progress bar wrapper */
+.progress-wrap {
+  width: 100%;
+  height: 14px;
+  background: #f1f5f9;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 12px 0;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Progress fill animation */
+.progress-fill {
+  height: 100%;
+  transition: width 0.8s ease;
+  border-radius: 20px;
+}
+
+/* File progress (blue gradient) */
+.file-progress {
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
+}
+
+/* Folder progress (purple gradient) */
+.folder-progress {
+  background: linear-gradient(90deg, #9333ea, #7e22ce);
+}
+
+/* Progress text */
+.progress-text {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #374151;
+  font-weight: 600;
+}
+
+
+
+.Footer {
+  background: linear-gradient(135deg, #0f172a, #1e293b); /* dark blue gradient */
+  color: #f1f5f9; /* light text */
+  padding: 2px 0;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.Footer-design p {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.Footer-design p:hover {
+  opacity: 1;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+
+.ending {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #94a3b8; /* cool gray */
+  text-align: center;
+  margin: 0;
+  padding: 15px 0;
+  letter-spacing: 1px;
+  border-top: 1px solid rgba(148, 163, 184, 0.3); 
+  transition: color 0.3s ease;
+}
+
+.ending:hover {
+  color: #38bdf8; /* cyan highlight on hover */
+  cursor: pointer;
+}
