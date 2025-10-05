@@ -26,7 +26,12 @@ SECRET_KEY = 'django-insecure-r$zcao(46j&xs!6jaj@0s5#m9x-=%!8)2(23$z$c4!q2^oprf0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    "192.168.100.163",
+    'clerklike-seismological-tereasa.ngrok-free.dev'
+]
 
 
 # Application definition
@@ -128,7 +133,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
-    'https://clerklike-seismological-tereasa.ngrok-free.dev'
 ]
 
 

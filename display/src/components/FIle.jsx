@@ -3,14 +3,18 @@ import { useState } from 'react'
 import axiosInstance from '../axiosInstance' 
 import JSZip, { file } from "jszip";
 import '../assets/css/style.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 const FIle = () => {
     const [file, setFile] = useState(null);
+    const [loading , setloading] =useState(false)
     const [file_id,setfileId]=useState(null);
     const [sizes, setSizes] = useState({ original: null, compressed: null });
     const handleFile = async (e) => {
     e.preventDefault();
     if (!file) return;
+    setloading(true) 
 
 
     const formData = new FormData();
@@ -44,6 +48,8 @@ const FIle = () => {
 
     } catch (error) {
       console.error("Upload error:", error.response?.data || error.message);
+    }finally{
+      setloading(false)
     }
   }
   const Handel_Download = async(e)=>{
@@ -80,7 +86,11 @@ return (
     <div className="file-container">
       <form onSubmit={handleFile}>
       <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+      {loading ? (
+      <button type='submit' className='btn btn-info d-block mx-auto' disabled ><FontAwesomeIcon icon={faSpinner} spin/>Compressing  ...</button>
+      ): (
       <button   type="submit">Zip File</button>
+      )}
         </form>
 
       {sizes.original && (

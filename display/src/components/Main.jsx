@@ -3,10 +3,14 @@ import { useState } from 'react'
 import axiosInstance from '../axiosInstance' 
 import JSZip from "jszip";
 import '../assets/css/style.css'
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 
 const Main = () => {
   const [folder, setFolder] = useState(null);
+  const [loading , setloading] =useState(false)
   const [folder_id, setfolderId] = useState(null);
   const [sizes, setSizes] = useState({ original: null, compressed: null });
   const handleFolder= async(e)=>{
@@ -18,6 +22,7 @@ const Main = () => {
       const relativePath = file.webkitRelativePath || file.name;
       zip.file(relativePath, file);
     }
+    setloading(true)
 
     const blob = await zip.generateAsync({ type: "blob" });
     const formData = new FormData();
@@ -56,7 +61,10 @@ const Main = () => {
 
     } catch (error) {
       console.error("Upload error:", error.response?.data || error.message);
-    } };
+    }finally{
+      setloading(false)
+    }
+ };
    const handleDownload = async () => {
     if (!folder_id) return;
 
@@ -88,7 +96,11 @@ const Main = () => {
         <div className="button">
             <form onSubmit={handleFolder}>
               <input type="file" webkitdirectory="true" directory="true"  multiple onChange={(e) => setFolder(e.target.files)} />
+               {loading ? (
+                 <button type='submit' className='btn btn-info d-block mx-auto' disabled ><FontAwesomeIcon icon={faSpinner} spin/>Compressing  ...</button>
+                ): (
               <button  value={folder}type='submit'>Zip Folder</button>
+               )}
             </form>
             {sizes.original && (
             <div className="result-card folder-result">
